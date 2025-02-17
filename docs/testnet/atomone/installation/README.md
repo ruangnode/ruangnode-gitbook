@@ -91,8 +91,8 @@ sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/.atomone/config/config
 
 ## Config pruning
 ```
-sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" $CHAIN_DIR/.atomone/config/app.toml 
-sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/" $CHAIN_DIR/.atomone/config/app.toml
+sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" $HOME/.atomone/config/app.toml 
+sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/" $HOME/.atomone/config/app.toml
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"19\"/" $HOME/.atomone/config/app.toml
 ```
 

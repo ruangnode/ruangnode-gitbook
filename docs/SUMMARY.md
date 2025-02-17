@@ -1,7 +1,6 @@
 # Table of contents
 
 * [ Supported chains](README.md)
-* [ Supported IBC relayers](https://relayers.kjnodes.com)
 
 ## MAINNET
 
@@ -13,7 +12,7 @@
   * [Useful commands](mainnet/nolus/useful-commands/README.md)
 
 * [Atomone](mainnet/atomone/README.md)
-  * [Installation](mainnet/nolus/installation/README.md)
+  * [Installation](mainnet/atomone/installation/README.md)
   * [Upgrade](mainnet/atomone/upgrade/README.md)
   * [Snapshot](mainnet/atomone/snapshot/README.md)
   * [State sync](mainnet/atomone/state-sync/README.md)

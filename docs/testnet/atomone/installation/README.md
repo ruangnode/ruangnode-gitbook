@@ -59,7 +59,7 @@ wget -O $HOME/.atomone/config/addrbook.json https://server-1.ruangnode.com/testn
 SEEDS=""
 PEERS=""
 sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*seeds *=.*/seeds = \"$SEEDS\"/}" \
-       -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peers = \"$PEERS\"/}" /home/github/.atomone/config/config.toml
+       -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peers = \"$PEERS\"/}" $HOME/.atomone/config/config.toml
 ```
 
 ```
@@ -79,7 +79,7 @@ sed -i.bak -e "s%:26658%:${CUSTOM_PORT}658%g;
 s%:26657%:${CUSTOM_PORT}657%g;
 s%:6060%:${CUSTOM_PORT}060%g;
 s%:26656%:${CUSTOM_PORT}656%g;
-s%^external_address = \"\"%external_address = \"138.201.156.44:${CUSTOM_PORT}656\"%;
+s%^external_address = \"\"%external_address = \"$(wget -qO- eth0.me):${CUSTOM_PORT}656\"%;
 s%:26660%:${CUSTOM_PORT}660%g" $HOME/.atomone/config/config.toml
 ```
 
@@ -91,9 +91,9 @@ sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/.atomone/config/config
 
 ## Config pruning
 ```
-sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" /home/github/.atomone/config/app.toml 
-sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/" /home/github/.atomone/config/app.toml
-sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"19\"/" /home/github/.atomone/config/app.toml
+sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" $CHAIN_DIR/.atomone/config/app.toml 
+sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/" $CHAIN_DIR/.atomone/config/app.toml
+sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"19\"/" $HOME/.atomone/config/app.toml
 ```
 
 ## Set minimum gas price

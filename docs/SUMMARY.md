@@ -12,6 +12,13 @@
   * [State sync](mainnet/nolus/state-sync/README.md)
   * [Useful commands](mainnet/nolus/useful-commands/README.md)
 
+* [Atomone](mainnet/atomone/README.md)
+  * [Installation](mainnet/nolus/installation/README.md)
+  * [Upgrade](mainnet/atomone/upgrade/README.md)
+  * [Snapshot](mainnet/atomone/snapshot/README.md)
+  * [State sync](mainnet/atomone/state-sync/README.md)
+  * [Useful commands](mainnet/atomone/useful-commands/README.md)
+
 ## TESTNET
 
 * [Nolus](testnet/nolus/README.md)

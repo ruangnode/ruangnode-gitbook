@@ -3,11 +3,11 @@ description: Setting up your validator node has never been so easy. Get your val
 ---
 # Installation
 <figure><img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/atomone.png" alt=""><figcaption></figcaption></figure>
-**Chain ID**: atomone-1 | **Latest Version Tag**: v1.0.1  | **Custom Port**: 10
+**Chain ID**: atomone-testnet-1 | **Latest Version Tag**: v1.0.1  | **Custom Port**: 10
 ```
 echo "export NODENAME=Yournodename" >> $HOME/.bash_profile
 echo "export WALLET=wallet" >> $HOME/.bash_profile
-echo "export CHAIN_ID=atomone-1" >> $HOME/.bash_profile
+echo "export CHAIN_ID=atomone-testnet-1" >> $HOME/.bash_profile
 echo "export CUSTOM_PORT="10"" >> /home/github/.bash_profile
 source $HOME/.bash_profile
 ```
@@ -37,21 +37,21 @@ fi
 ## Download and build binaries
 ```
 cd $HOME
-wget https://server-1.ruangnode.com/mainnet/atomone/atomoned
+wget https://server-1.ruangnode.com/testnet/atomone/atomoned
 chmod +x atomoned
 mv atomoned $HOME/go/bin/atomone
 ```
 
 ## Init app
 ```
-atomoned init Yournodename --chain-id atomone-1
+atomoned init Yournodename --chain-id atomone-testnet-1
 ```
 
 ## Download configuration
 ```
 cd $HOME
-wget -O $HOME/.atomone/config/genesis.json https://server-1.ruangnode.com/testnet/mainnet/genesis.json
-wget -O $HOME/.atomone/config/addrbook.json https://server-1.ruangnode.com/testnet/mainnet/addrbook.json
+wget -O $HOME/.atomone/config/genesis.json https://server-1.ruangnode.com/testnet/atomone/genesis.json
+wget -O $HOME/.atomone/config/addrbook.json https://server-1.ruangnode.com/testnet/atomone/addrbook.json
 ```
 
 ```

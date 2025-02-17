@@ -34,7 +34,7 @@ atomoned tx staking create-validator \
   --min-self-delegation "1" \
   --pubkey $(atomoned tendermint show-validator) \
   --moniker=$MONIKER \
-  --chain-id=atomone-1 \
+  --chain-id=atomone-testnet-1 \
   --gas-adjustment 1.4 \
   --gas auto \
   --gas-prices 0.001atone
@@ -43,22 +43,22 @@ atomoned tx staking create-validator \
 ## Staking, Delegation, and Rewards
 Delegate stake:
 ```
-atomoned tx staking delegate $VALOPER_ADDRESS 1000000atone --from=wallet --chain-id=atomone-1 --gas=auto
+atomoned tx staking delegate $VALOPER_ADDRESS 1000000atone --from=wallet --chain-id=atomone-testnet-1 --gas=auto
 ```
 
 Redelegate stake:
 ```
-atomoned tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 1000000atone --from=wallet --chain-id=atomone-1 --gas=auto
+atomoned tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 1000000atone --from=wallet --chain-id=atomone-testnet-1 --gas=auto
 ```
 
 Withdraw all rewards:
 ```
-atomoned tx distribution withdraw-all-rewards --from=wallet --chain-id=atomone-1 --gas=auto
+atomoned tx distribution withdraw-all-rewards --from=wallet --chain-id=atomone-testnet-1 --gas=auto
 ```
 
 Withdraw rewards with commission:
 ```
-atomoned tx distribution withdraw-rewards $VALOPER_ADDRESS --from=wallet --commission --chain-id=atomone-1
+atomoned tx distribution withdraw-rewards $VALOPER_ADDRESS --from=wallet --commission --chain-id=atomone-testnet-1
 ```
 
 ## Validator Management
@@ -69,13 +69,13 @@ atomoned tx staking edit-validator \
   --identity=<your_keybase_id> \
   --website="<your_website>" \
   --details="<your_validator_description>" \
-  --chain-id=atomone-1 \
+  --chain-id=atomone-testnet-1 \
   --from=wallet
 ```
 
 Unjail validator:
 ```
-atomoned tx slashing unjail --from=wallet --chain-id=atomone-1 --gas=auto
+atomoned tx slashing unjail --from=wallet --chain-id=atomone-testnet-1 --gas=auto
 ```
 
 ## Service Management

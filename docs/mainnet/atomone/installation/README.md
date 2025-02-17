@@ -12,7 +12,6 @@ echo "export NODENAME=Yournodename" >> $HOME/.bash_profile
 echo "export WALLET=wallet" >> $HOME/.bash_profile
 echo "export CHAIN_ID=atomone-1" >> $HOME/.bash_profile
 echo "export CUSTOM_PORT="10"" >> /home/github/.bash_profile
-
 source $HOME/.bash_profile
 ```
 

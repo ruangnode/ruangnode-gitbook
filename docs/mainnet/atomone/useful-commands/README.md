@@ -1,7 +1,8 @@
-#Useful Commands
 <figure><img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/atomone.png" alt=""><figcaption></figcaption></figure>
+
 ## Create Wallet
 To create a new wallet, use the command below. Don’t forget to save the mnemonic:
+
 ```
 atomoned keys add wallet
 ```

@@ -1,75 +1,97 @@
-## Guidence for create validator
 
-### Create wallet
-To create new wallet you can use command below. Don’t forget to save the mnemonic
+## Create Wallet
+To create a new wallet, use the command below. Don’t forget to save the mnemonic:
 ```
-atomoned keys add $WALLET
-```
-
-To recover your wallet using seed phrase
-```
-atomoned keys add $WALLET --recover
+atomoned keys add wallet
 ```
 
-Show your wallet list
+To recover your wallet using a seed phrase:
+```
+ keys add wallet --recover
+```
+
+Show your wallet list:
 ```
 atomoned keys list
 ```
 
-### Save wallet info
-Add wallet and validator address into variables 
+
+## Create Validator
+
+Check your wallet balance:
 ```
-ATOMONE_WALLET_ADDRESS=$(atomoned keys show $WALLET -a)
-ATOMONE_VALOPER_ADDRESS=$(atomoned keys show $WALLET --bech val -a)
-echo 'export ATOMONE_WALLET_ADDRESS='${ATOMONE_WALLET_ADDRESS} >> $HOME/.bash_profile
-echo 'export ATOMONE_VALOPER_ADDRESS='${ATOMONE_VALOPER_ADDRESS} >> $HOME/.bash_profile
-source $HOME/.bash_profile
+atomoned query bank balances wallet
 ```
 
-### Fund your wallet
-
-```
-Buy on Osmosis DEX
-```
-
-### Create validator
-
-check your wallet balance:
-```
-atomoned query bank balances $ATOMONE_WALLET_ADDRESS
-```
-To create your validator run command below
+To create your validator, run the command below:
 ```
 atomoned tx staking create-validator \
-  --amount 1000000uatone \
-  --from $WALLET \
+  --amount 1000000atone \
+  --from=wallet \
   --commission-max-change-rate "0.01" \
   --commission-max-rate "0.2" \
   --commission-rate "0.1" \
   --min-self-delegation "1" \
-  --pubkey  $(atomoned tendermint show-validator) \
-  --moniker $NODENAME \
-  --chain-id $ATOMONE_CHAIN_ID
-  --gas-prices=0.1uatone \
-  --gas-adjustment=1.5 \
-  --gas=auto
+  --pubkey $(atomoned tendermint show-validator) \
+  --moniker=$MONIKER \
+  --chain-id=atomone-1 \
+  --gas-adjustment 1.4 \
+  --gas auto \
+  --gas-prices 0.001atone
 ```
 
-### Check your validator key
+## Staking, Delegation, and Rewards
+Delegate stake:
 ```
-[[ $(atomoned q staking validator $ATOMONE_VALOPER_ADDRESS -oj | jq -r .consensus_pubkey.key) = $(atomoned status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
-```
-
-### Get list of validators
-```
-atomoned q staking validators -oj --limit=3000 | jq '.validators[] | select(.status=="BOND_STATUS_BONDED")' | jq -r '(.tokens|tonumber/pow(10; 6)|floor|tostring) + " \t " + .description.moniker' | sort -gr | nl
+atomoned tx staking delegate $VALOPER_ADDRESS 1000000atone --from=wallet --chain-id=atomone-1 --gas=auto
 ```
 
-## Usefull commands
-### Service management
+Redelegate stake:
+```
+atomoned tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 1000000atone --from=wallet --chain-id=atomone-1 --gas=auto
+```
+
+Withdraw all rewards:
+```
+atomoned tx distribution withdraw-all-rewards --from=wallet --chain-id=atomone-1 --gas=auto
+```
+
+Withdraw rewards with commission:
+```
+atomoned tx distribution withdraw-rewards $VALOPER_ADDRESS --from=wallet --commission --chain-id=atomone-1
+```
+
+## Validator Management
+Edit validator:
+```
+atomoned tx staking edit-validator \
+  --moniker=$MONIKER \
+  --identity=<your_keybase_id> \
+  --website="<your_website>" \
+  --details="<your_validator_description>" \
+  --chain-id=atomone-1 \
+  --from=wallet
+```
+
+Unjail validator:
+```
+atomoned tx slashing unjail --from=wallet --chain-id=atomone-1 --gas=auto
+```
+
+## Service Management
 Check logs
 ```
-journalctl -fu atomoned -o cat
+sudo journalctl -u atomoned -fo cat
+```
+
+Check service status
+```
+sudo systemctl status atomoned
+```
+
+Node info
+```
+atomoned status 2>&1 | jq
 ```
 
 Start service
@@ -77,9 +99,19 @@ Start service
 sudo systemctl start atomoned
 ```
 
+Reload services
+```
+sudo systemctl daemon-reload
+```
+
 Stop service
 ```
 sudo systemctl stop atomoned
+```
+
+Enable Service
+```
+sudo systemctl enable atomoned
 ```
 
 Restart service
@@ -87,96 +119,7 @@ Restart service
 sudo systemctl restart atomoned
 ```
 
-### Node info
-Synchronization info
+Disable Service
 ```
-atomoned status 2>&1 | jq .SyncInfo
-```
-
-Validator info
-```
-atomoned status 2>&1 | jq .ValidatorInfo
-```
-
-Node info
-```
-atomoned status 2>&1 | jq .NodeInfo
-```
-
-Show node id
-```
-atomoned tendermint show-node-id
-```
-
-### Wallet operations
-List of wallets
-```
-atomoned keys list
-```
-
-Recover wallet
-```
-atomoned keys add $WALLET --recover
-```
-
-Delete wallet
-```
-atomoned keys delete $WALLET
-```
-
-Get wallet balance
-```
-atomoned query bank balances $ATOMONE_WALLET_ADDRESS
-```
-
-Transfer funds
-```
-atomoned tx bank send $ATOMONE_WALLET_ADDRESS <TO_ATOMONE_WALLET_ADDRESS> 1000000uatone
-```
-
-### Voting
-```
-atomoned tx gov vote 1 yes --from $WALLET --chain-id=$ATOMONE_CHAIN_ID
-```
-
-### Staking, Delegation and Rewards
-Delegate stake
-```
-atomoned tx staking delegate $ATOMONE_VALOPER_ADDRESS 1000000uatone --from=$WALLET --chain-id=$ATOMONE_CHAIN_ID --gas=auto
-```
-
-Redelegate stake from validator to another validator
-```
-atomoned tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 1000000uatone --from=$WALLET --chain-id=$ATOMONE_CHAIN_ID --gas=auto
-```
-
-Withdraw all rewards
-```
-atomoned tx distribution withdraw-all-rewards --from=$WALLET --chain-id=$ATOMONE_CHAIN_ID --gas=auto
-```
-
-Withdraw rewards with commision
-```
-atomoned tx distribution withdraw-rewards $ATOMONE_VALOPER_ADDRESS --from=$WALLET --commission --chain-id=$ATOMONE_CHAIN_ID
-```
-
-### Validator management
-Edit validator
-```
-atomoned tx staking edit-validator \
-  --moniker=$NODENAME \
-  --identity=<your_keybase_id> \
-  --website="<your_website>" \
-  --details="<your_validator_description>" \
-  --chain-id=$ATOMONE_CHAIN_ID \
-  --from=$WALLET
-```
-
-Unjail validator
-```
-atomoned tx slashing unjail \
-  --broadcast-mode=block \
-  --from=$WALLET \
-  --chain-id=$ATOMONE_CHAIN_ID \
-  --gas=auto
+sudo systemctl disable atomoned
 ```

@@ -1,18 +1,18 @@
-### How To Install Full Node Atomone Mainnet
+---
+description: Setting up your validator node has never been so easy. Get your validator running in minutes by following step by step instructions.
+---
 
-## Setting up vars
-Your Nodename (validator) that will shows in explorer
-```
-NODENAME=<Your_Nodename_Moniker>
-```
+# Installation
 
-Save variables to system
+<figure><img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/atomone.png" alt=""><figcaption></figcaption></figure>
+
+**Chain ID**: atomone-1 | **Latest Version Tag**: v1.0.1  | **Custom Port**: 10
 ```
-echo "export NODENAME=$NODENAME" >> $HOME/.bash_profile
-if [ ! $WALLET ]; then
-        echo "export WALLET=wallet" >> $HOME/.bash_profile
-fi
-echo "export ATOMONE_CHAIN_ID=atomone-1" >> $HOME/.bash_profile
+echo "export NODENAME=Yournodename" >> $HOME/.bash_profile
+echo "export WALLET=wallet" >> $HOME/.bash_profile
+echo "export CHAIN_ID=atomone-1" >> $HOME/.bash_profile
+echo "export CUSTOM_PORT="10"" >> /home/github/.bash_profile
+
 source $HOME/.bash_profile
 ```
 
@@ -26,15 +26,13 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install curl build-essential git wget jq make gcc tmux net-tools ccze -y
 ```
 
-## Install go
+## Install Go
 ```
-if ! [ -x "$(command -v go)" ]; then
-  ver="1.21.2"
   cd $HOME
-  wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
+  wget "https://golang.org/dl/go1.21.3.linux-amd64.tar.gz"
   sudo rm -rf /usr/local/go
-  sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
-  rm "go$ver.linux-amd64.tar.gz"
+  sudo tar -C /usr/local -xzf "go1.21.3.linux-amd64.tar.gz"
+  rm "go1.21.3.linux-amd64.tar.gz"
   echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
   source ~/.bash_profile
 fi
@@ -43,30 +41,49 @@ fi
 ## Download and build binaries
 ```
 cd $HOME
-git clone https://github.com/atomone-hub/atomone.git
-cd atomone
-git checkout v1.0.1
-make install
+wget https://server-1.ruangnode.com/mainnet/atomone/atomoned
+chmod +x atomoned
+mv atomoned $HOME/go/bin/atomone
 ```
 
 ## Init app
 ```
-atomoned init $NODENAME --chain-id $ATOMONE_CHAIN_ID
+atomoned init Yournodename --chain-id atomone-1
 ```
 
-### Download configuration
+## Download configuration
 ```
-wget https://server-1.ruangnode.com/snap-mainnet/atomone/genesis.json -O $HOME/.atomone/config/genesis.json
-wget https://server-1.ruangnode.com/snap-mainnet/atomone/addrbook.json -O $HOME/.atomone/config/addrbook.json
+cd $HOME
+wget -O $HOME/.atomone/config/genesis.json https://server-1.ruangnode.com/mainnet/atomone/genesis.json
+wget -O $HOME/.atomone/config/addrbook.json https://server-1.ruangnode.com/mainnet/atomone/addrbook.json
 ```
 
-## Set the minimum gas price and Peers, Filter peers/ MaxPeers
 ```
 SEEDS=""
-PEERS="ed0e36c57122184ab05b6c635b2f2adf592bfa0c@atomone-mainnet-peer.itrocket.net:61657,5d913650738a081aa02631a7f108dc7812330f0b@37.27.129.24:13656,706a835221dcc171afa14429fac536d6b5a3736d@63.250.54.71:62656,4ef48d2cc03b332f9a711fc65dc0453839f9040d@8.52.153.92:61656,752bb5f1c914c5294e0844ddc908548115c1052c@65.108.236.5:14556,6c4b686add2ae26aad617a15e4db012e7496eee1@154.91.1.108:62656,d3adcf9eee8665ee2d3108f721b3613cdd18c3a3@23.227.223.49:62656,8391dab9a9ece4e3f80e06512bdd1a84af5f257f@95.217.36.103:14556,61b7861a468dfa84532526afd98bea81bf41a874@121.78.247.244:16656,42c384bdf78ea2a2e7fc0c4e1716ef94951fca16@95.214.52.233:36656,37201c92625df2814a55129f73f10ab6aa2edc35@185.16.39.137:27396"
-sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.atomone/config/config.toml
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0001uatone\"/;" ~/.atomone/config/app.toml
-sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.atomone/config/config.toml
+PEERS=""
+sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*seeds *=.*/seeds = \"$SEEDS\"/}" \
+       -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peers = \"$PEERS\"/}" /home/github/.atomone/config/config.toml
+```
+
+```
+# set custom ports in app.toml
+sed -i.bak -e "s%:1317%:$\{CUSTOM_PORT}317%g;
+s%:8080%:${CUSTOM_PORT}080%g;
+s%:9090%:${CUSTOM_PORT}090%g;
+s%:9091%:${CUSTOM_PORT}091%g;
+s%:8545%:${CUSTOM_PORT}545%g;
+s%:8546%:${CUSTOM_PORT}546%g;
+s%:6065%:${CUSTOM_PORT}065%g" $HOME/.atomone/config/app.toml
+```
+
+```
+# set custom ports in config.toml file
+sed -i.bak -e "s%:26658%:${CUSTOM_PORT}658%g;
+s%:26657%:${CUSTOM_PORT}657%g;
+s%:6060%:${CUSTOM_PORT}060%g;
+s%:26656%:${CUSTOM_PORT}656%g;
+s%^external_address = \"\"%external_address = \"138.201.156.44:${CUSTOM_PORT}656\"%;
+s%:26660%:${CUSTOM_PORT}660%g" $HOME/.atomone/config/config.toml
 ```
 
 ## Disable indexing
@@ -77,33 +94,33 @@ sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/.atomone/config/config
 
 ## Config pruning
 ```
-pruning="custom" && \
-pruning_keep_recent="100" && \
-pruning_keep_every="0" && \
-pruning_interval="19" && \
-sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" ~/.atomone/config/app.toml && \
-sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" ~/.atomone/config/app.toml && \
-sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" ~/.atomone/config/app.toml && \
-sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" ~/.atomone/config/app.toml
+sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" /home/github/.atomone/config/app.toml 
+sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/" /home/github/.atomone/config/app.toml
+sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"19\"/" /home/github/.atomone/config/app.toml
+```
+
+## Set minimum gas price
+```
+sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0.001uatone"|g' $HOME/.atomone/config/app.toml
 ```
 
 ## Create service
 ```
-sudo tee /etc/systemd/system/atomoned.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/atomoned.service > /dev/null <<EOF2
 [Unit]
-Description=atomone
+Description=atomoned Node
 After=network-online.target
 
 [Service]
-User=$USER
-ExecStart=$(which atomoned) start
+User=USER
+ExecStart= start
 Restart=on-failure
-RestartSec=3
+RestartSec=10
 LimitNOFILE=65535
 
 [Install]
 WantedBy=multi-user.target
-EOF
+EOF2
 ```
 
 ## Register and start service

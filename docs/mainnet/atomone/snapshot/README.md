@@ -1,6 +1,10 @@
+# Snapshot
+
+<figure><img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/atomone.png" alt=""><figcaption></figcaption></figure>
+
+**Chain ID**: atomone-1 | **Latest Version Tag**: v1.0.1  | **Custom Port**: 10
 ## Snapshot
 To restore a snapshot, follow the steps below:
-
 ```
 sudo systemctl stop atomoned
 cp $HOME/.atomone/data/priv_validator_state.json $HOME/.atomone/priv_validator_state.json.backup

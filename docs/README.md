@@ -10,7 +10,7 @@ description: Discover base tools contributed to the projects by kjnodes team.
 
 
 <img src="https://raw.githubusercontent.com/kj89/cosmos-images/main/icons/nolus.png" alt="" data-size="line"> [Nolus](mainnet/nolus/)
-
+<img src="https://raw.githubusercontent.com/kj89/cosmos-images/main/icons/nolus.png" alt="" data-size="line"> [Nolus](mainnet/atomone/)
 
 ## TESTNET
 

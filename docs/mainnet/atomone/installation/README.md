@@ -1,135 +1,114 @@
----
-description: Setting up your validator node has never been so easy. Get your validator running in minutes by following step by step instructions.
----
+### How To Install Full Node Atomone Mainnet
 
-# Installation
-
-<figure><img src="https://raw.githubusercontent.com/kj89/cosmos-images/main/logos/nolus.png" alt=""><figcaption></figcaption></figure>
-
-**Chain ID**: pirin-1 | **Latest Version Tag**: v0.4.0 | **Custom Port**: 143
-
-### Setup validator name
-
-{% hint style='info' %}
-Replace **YOUR_MONIKER_GOES_HERE** with your validator name
-{% endhint %}
-
-```bash
-MONIKER="YOUR_MONIKER_GOES_HERE"
+## Setting up vars
+Your Nodename (validator) that will shows in explorer
+```
+NODENAME=<Your_Nodename_Moniker>
 ```
 
-### Install dependencies
-
-#### Update system and install build tools
-
-```bash
-sudo apt -q update
-sudo apt -qy install curl git jq lz4 build-essential
-sudo apt -qy upgrade
+Save variables to system
+```
+echo "export NODENAME=$NODENAME" >> $HOME/.bash_profile
+if [ ! $WALLET ]; then
+        echo "export WALLET=wallet" >> $HOME/.bash_profile
+fi
+echo "export ATOMONE_CHAIN_ID=atomone-1" >> $HOME/.bash_profile
+source $HOME/.bash_profile
 ```
 
-#### Install Go
-
-```bash
-sudo rm -rf /usr/local/go
-curl -Ls https://go.dev/dl/go1.20.5.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
-eval $(echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee /etc/profile.d/golang.sh)
-eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)
+## Update packages
+```
+sudo apt update && sudo apt upgrade -y
 ```
 
-### Download and build binaries
+## Install dependencies
+```
+sudo apt install curl build-essential git wget jq make gcc tmux net-tools ccze -y
+```
 
-```bash
-# Clone project repository
+## Install go
+```
+if ! [ -x "$(command -v go)" ]; then
+  ver="1.21.2"
+  cd $HOME
+  wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
+  sudo rm -rf /usr/local/go
+  sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
+  rm "go$ver.linux-amd64.tar.gz"
+  echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
+  source ~/.bash_profile
+fi
+```
+
+## Download and build binaries
+```
 cd $HOME
-rm -rf nolus-core
-git clone https://github.com/Nolus-Protocol/nolus-core.git
-cd nolus-core
-git checkout v0.4.0
-
-# Build binaries
-make build
-
-# Prepare binaries for Cosmovisor
-mkdir -p $HOME/.nolus/cosmovisor/genesis/bin
-mv target/release/nolusd $HOME/.nolus/cosmovisor/genesis/bin/
-rm -rf build
-
-# Create application symlinks
-sudo ln -s $HOME/.nolus/cosmovisor/genesis $HOME/.nolus/cosmovisor/current -f
-sudo ln -s $HOME/.nolus/cosmovisor/current/bin/nolusd /usr/local/bin/nolusd -f
+git clone https://github.com/atomone-hub/atomone.git
+cd atomone
+git checkout v1.0.1
+make install
 ```
 
-### Install Cosmovisor and create a service
+## Init app
+```
+atomoned init $NODENAME --chain-id $ATOMONE_CHAIN_ID
+```
 
-```bash
-# Download and install Cosmovisor
-go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
+### Download configuration
+```
+wget https://server-1.ruangnode.com/snap-mainnet/atomone/genesis.json -O $HOME/.atomone/config/genesis.json
+wget https://server-1.ruangnode.com/snap-mainnet/atomone/addrbook.json -O $HOME/.atomone/config/addrbook.json
+```
 
-# Create service
-sudo tee /etc/systemd/system/nolusd.service > /dev/null << EOF
+## Set the minimum gas price and Peers, Filter peers/ MaxPeers
+```
+SEEDS=""
+PEERS="ed0e36c57122184ab05b6c635b2f2adf592bfa0c@atomone-mainnet-peer.itrocket.net:61657,5d913650738a081aa02631a7f108dc7812330f0b@37.27.129.24:13656,706a835221dcc171afa14429fac536d6b5a3736d@63.250.54.71:62656,4ef48d2cc03b332f9a711fc65dc0453839f9040d@8.52.153.92:61656,752bb5f1c914c5294e0844ddc908548115c1052c@65.108.236.5:14556,6c4b686add2ae26aad617a15e4db012e7496eee1@154.91.1.108:62656,d3adcf9eee8665ee2d3108f721b3613cdd18c3a3@23.227.223.49:62656,8391dab9a9ece4e3f80e06512bdd1a84af5f257f@95.217.36.103:14556,61b7861a468dfa84532526afd98bea81bf41a874@121.78.247.244:16656,42c384bdf78ea2a2e7fc0c4e1716ef94951fca16@95.214.52.233:36656,37201c92625df2814a55129f73f10ab6aa2edc35@185.16.39.137:27396"
+sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.atomone/config/config.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0001uatone\"/;" ~/.atomone/config/app.toml
+sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.atomone/config/config.toml
+```
+
+## Disable indexing
+```
+indexer="null"
+sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/.atomone/config/config.toml
+```
+
+## Config pruning
+```
+pruning="custom" && \
+pruning_keep_recent="100" && \
+pruning_keep_every="0" && \
+pruning_interval="19" && \
+sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" ~/.atomone/config/app.toml && \
+sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" ~/.atomone/config/app.toml && \
+sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" ~/.atomone/config/app.toml && \
+sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" ~/.atomone/config/app.toml
+```
+
+## Create service
+```
+sudo tee /etc/systemd/system/atomoned.service > /dev/null <<EOF
 [Unit]
-Description=nolus node service
+Description=atomone
 After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(which cosmovisor) run start
+ExecStart=$(which atomoned) start
 Restart=on-failure
-RestartSec=10
+RestartSec=3
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.nolus"
-Environment="DAEMON_NAME=nolusd"
-Environment="UNSAFE_SKIP_BACKUP=true"
-Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.nolus/cosmovisor/current/bin"
 
 [Install]
 WantedBy=multi-user.target
 EOF
+```
+
+## Register and start service
+```
 sudo systemctl daemon-reload
-sudo systemctl enable nolusd
-```
-
-### Initialize the node
-
-```bash
-# Set node configuration
-nolusd config chain-id pirin-1
-nolusd config keyring-backend file
-nolusd config node tcp://localhost:14357
-
-# Initialize the node
-nolusd init $MONIKER --chain-id pirin-1
-
-# Download genesis and addrbook
-curl -Ls https://snapshots.kjnodes.com/nolus/genesis.json > $HOME/.nolus/config/genesis.json
-curl -Ls https://snapshots.kjnodes.com/nolus/addrbook.json > $HOME/.nolus/config/addrbook.json
-
-# Add seeds
-sed -i -e "s|^seeds *=.*|seeds = \"400f3d9e30b69e78a7fb891f60d76fa3c73f0ecc@nolus.rpc.kjnodes.com:14359\"|" $HOME/.nolus/config/config.toml
-
-# Set minimum gas price
-sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.0025unls\"|" $HOME/.nolus/config/app.toml
-
-# Set pruning
-sed -i \
-  -e 's|^pruning *=.*|pruning = "nothing"|' \
-  $HOME/.nolus/config/app.toml
-
-# Set custom ports
-sed -i -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:14358\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:14357\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:14360\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:14356\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":14366\"%" $HOME/.nolus/config/config.toml
-sed -i -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:14317\"%; s%^address = \":8080\"%address = \":14380\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:14390\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:14391\"%; s%:8545%:14345%; s%:8546%:14346%; s%:6065%:14365%" $HOME/.nolus/config/app.toml
-```
-
-### Download latest chain snapshot
-
-```bash
-curl -L https://snapshots.kjnodes.com/nolus/snapshot_latest.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.nolus
-[[ -f $HOME/.nolus/data/upgrade-info.json ]] && cp $HOME/.nolus/data/upgrade-info.json $HOME/.nolus/cosmovisor/genesis/upgrade-info.json
-```
-
-### Start service and check the logs
-
-```bash
-sudo systemctl start nolusd && sudo journalctl -u nolusd -f --no-hostname -o cat
+sudo systemctl enable atomoned
+sudo systemctl restart atomoned && sudo journalctl -u atomoned -f -o cat
 ```

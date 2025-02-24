@@ -109,8 +109,8 @@ Description=fuelsequencerd Node
 After=network-online.target
 
 [Service]
-User=USER
-ExecStart= start
+User=$USER
+ExecStart=$(which fuelsequencerd) start
 Restart=on-failure
 RestartSec=10
 LimitNOFILE=65535

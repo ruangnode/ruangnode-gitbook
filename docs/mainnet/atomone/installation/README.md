@@ -109,8 +109,8 @@ Description=atomoned Node
 After=network-online.target
 
 [Service]
-User=USER
-ExecStart= start
+User=$USER
+ExecStart=$(which atomoned) start --home $HOME/.atomone
 Restart=on-failure
 RestartSec=10
 LimitNOFILE=65535

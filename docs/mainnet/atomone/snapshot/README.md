@@ -1,0 +1,14 @@
+<figure><img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/atomone.png" alt=""><figcaption></figcaption></figure>
+
+## Snapshot
+To restore a snapshot, follow the steps below:
+
+```
+sudo systemctl stop atomoned
+cp $HOME/.atomone/data/priv_validator_state.json $HOME/.atomone/priv_validator_state.json.backup
+rm -rf $HOME/.atomone/data
+curl https://server-1.ruangnode.com/mainnet/atomone/atomone-snap.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.atomone
+mv $HOME/.atomone/priv_validator_state.json.backup $HOME/.atomone/data/priv_validator_state.json
+sudo systemctl restart atomoned && sudo journalctl -u atomoned -f
+```
+

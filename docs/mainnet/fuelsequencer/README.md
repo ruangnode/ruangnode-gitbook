@@ -3,7 +3,7 @@
 
 <figure><img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/fuelsequencer.png" alt=""><figcaption></figcaption></figure>
 
-AtomOne is a community-driven, constitutionally governed blockchain designed to prioritize security, decentralization, and innovation within the Cosmos ecosystem. Serving as a minimal fork of the Cosmos Hub, it supports IBC and ICS for scalable interchain solutions.
+Fuel is an operating system purpose built for Ethereum Rollups. Fuel allows rollups to solve for PSI (parallelization, state minimized execution, interoperability) without making any sacrifices.
 
 **Chain ID**: seq-mainnet-1 | **BIN_VERSION**: seq-mainnet-1.2-improved-sidecar  | **Wasm**: off
 

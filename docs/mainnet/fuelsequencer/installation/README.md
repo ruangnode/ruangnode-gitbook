@@ -103,7 +103,7 @@ sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "10fuel"|g' $HOME/.fuelseq
 
 ## Create service
 ```
-sudo tee /etc/systemd/system/fuelsequencerd.service > /dev/null <<EOF2
+sudo tee  > /dev/null <<EOF2
 [Unit]
 Description=fuelsequencerd Node
 After=network-online.target

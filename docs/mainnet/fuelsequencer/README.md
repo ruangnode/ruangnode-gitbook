@@ -1,46 +1,38 @@
 
 # Services
 
-<figure><img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/$PROJECT_NAME.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/fuelsequencer.png" alt=""><figcaption></figcaption></figure>
 
 AtomOne is a community-driven, constitutionally governed blockchain designed to prioritize security, decentralization, and innovation within the Cosmos ecosystem. Serving as a minimal fork of the Cosmos Hub, it supports IBC and ICS for scalable interchain solutions.
 
-**Chain ID**: $CHAIN_ID | **BIN_VERSION**: $BIN_VERSION  | **Wasm**: $WASM
+**Chain ID**: seq-mainnet-1 | **BIN_VERSION**: seq-mainnet-1.2-improved-sidecar  | **Wasm**: off
 
-[Website]($WEBSITE) | [Discord]($DISCORD) | [Twitter]($TWITTER)
+[Website](https://fuel.network/) | [Discord](https://discord.gg/Pcqf7fWnbt) | [Twitter](https://x.com/fuel_network)
 
 ## Restake
 
-[Restake with ruangnode]($RESTAKE)
+[Restake with ruangnode]()
 ## Chain explorer
-[https://explorer.ruangnode.com]($EXPLORER)
+[https://explorer.ruangnode.com](https://explorer.ruangnode.com/fuel-mainnet)
 
 ## Public endpoints
 
-* api: [https://m-$PROJECT_NAME-api.ruangnode.com/](https://m-$PROJECT_NAME-api.ruangnode.com/)
-* rpc: [https://m-$PROJECT_NAME-rpc.ruangnode.com/](https://m-$PROJECT_NAME-rpc.ruangnode.com/)
-* grpc: m-$PROJECT_NAME-grpc.ruangnode.com:${CUSTOM_PORT}090
+* api: [https://m-fuelsequencer-api.ruangnode.com/](https://m-fuelsequencer-api.ruangnode.com/)
+* rpc: [https://m-fuelsequencer-rpc.ruangnode.com/](https://m-fuelsequencer-rpc.ruangnode.com/)
+* grpc: m-fuelsequencer-grpc.ruangnode.com:10090
 
 ## Peering
 
 **peers**
 
-```
-$PEER
-```
+
 
 **seed-node**
 
-```
-$SEED
-```
+
 
 **addrbook**
-```
-wget -O \$HOME/.$PROJECT_NAME/config/addrbook.json https://server-1.ruangnode.com/mainnet/$PROJECT_NAME/addrbook.json
-```
+
 
 **live-peers** (8)
-```
-peers="$LIVE_PEER"
-```
+

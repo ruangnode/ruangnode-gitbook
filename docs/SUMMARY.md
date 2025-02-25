@@ -23,3 +23,9 @@
   * [Upgrade](testnet/atomone/upgrade/README.md)
   * [Snapshot](testnet/atomone/snapshot/README.md)
   * [Useful commands](testnet/atomone/useful-commands/README.md)
+
+  * [Union](testnet/union/README.md)
+  * [Installation](testnet/union/installation/README.md)
+  * [Upgrade](testnet/union/upgrade/README.md)
+  * [Snapshot](testnet/union/snapshot/README.md)
+  * [Useful commands](testnet/union/useful-commands/README.md)

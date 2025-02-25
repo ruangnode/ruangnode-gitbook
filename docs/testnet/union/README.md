@@ -3,7 +3,7 @@
 
 <figure><img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/union.png" alt=""><figcaption></figcaption></figure>
 
-AtomOne is a community-driven, constitutionally governed blockchain designed to prioritize security, decentralization, and innovation within the Cosmos ecosystem. Serving as a minimal fork of the Cosmos Hub, it supports IBC and ICS for scalable interchain solutions.
+Union is a modular interoperability protocol which facilitates the exchange of assets and messages between blockchains & dApps.
 
 **Chain ID**: union-testnet-9 | **BIN_VERSION**: v0.25.0  | **Wasm**: on
 

@@ -2,7 +2,7 @@
 description: Setting up your validator node has never been so easy. Get your validator running in minutes by following step by step instructions.
 ---
 # Installation
-<figure><img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/fuel.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/fuelsequencer.png" alt=""><figcaption></figcaption></figure>
 **Chain ID**: seq-mainnet-1 | **Latest Version Tag**: seq-mainnet-1.2-improved-sidecar  | **Custom Port**: 10
 
 ```
@@ -51,8 +51,8 @@ fuelsequencerd init Yournodename --chain-id seq-mainnet-1
 ## Download configuration
 ```
 cd $HOME
-wget -O $HOME/.fuelsequencer/config/genesis.json https://server-1.ruangnode.com/testnet/mainnet/fuelsequencer/genesis.json
-wget -O $HOME/.fuelsequencer/config/addrbook.json https://server-1.ruangnode.com/testnet/mainnet/fuelsequencer/addrbook.json
+wget -O $HOME/.fuelsequencer/config/genesis.json https://server-1.ruangnode.com/mainnet/fuelsequencer/genesis.json
+wget -O $HOME/.fuelsequencer/config/addrbook.json https://server-1.ruangnode.com/mainnet/fuelsequencer/genesis.json
 ```
 
 ```

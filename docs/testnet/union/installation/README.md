@@ -38,7 +38,7 @@ fi
 ## Download and build binaries
 ```
 cd $HOME
-wget 
+wget https://server-1.ruangnode.com/testnet/union/uniond
 chmod +x uniond
 mv uniond $HOME/go/bin/union
 ```

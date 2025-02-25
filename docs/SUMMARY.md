@@ -10,11 +10,11 @@
   * [Snapshot](mainnet/atomone/snapshot/README.md)
   * [Useful commands](mainnet/atomone/useful-commands/README.md)
 
-* [Fuel](mainnet/fuel/README.md)
-  * [Installation](mainnet/fuel/installation/README.md)
-  * [Upgrade](mainnet/fuel/upgrade/README.md)
-  * [Snapshot](mainnet/fuel/snapshot/README.md)
-  * [Useful commands](mainnet/fuel/useful-commands/README.md)
+* [Fuel](mainnet/fuelsequencer/README.md)
+  * [Installation](mainnet/fuelsequencer/installation/README.md)
+  * [Upgrade](mainnet/fuelsequencer/upgrade/README.md)
+  * [Snapshot](mainnet/fuelsequencer/snapshot/README.md)
+  * [Useful commands](mainnet/fuelsequencer/useful-commands/README.md)
 
 ## TESTNET
 

@@ -29,6 +29,3 @@
   * [Upgrade](testnet/union/upgrade/README.md)
   * [Snapshot](testnet/union/snapshot/README.md)
   * [Useful commands](testnet/union/useful-commands/README.md)
-
-
-* [Celestia](testnet/celestia/README.md)

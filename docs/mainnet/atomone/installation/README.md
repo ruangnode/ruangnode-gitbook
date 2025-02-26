@@ -25,14 +25,16 @@ sudo apt install curl build-essential git wget jq make gcc tmux net-tools ccze -
 
 ## Install Go
 ```
-  cd $HOME
-  wget "https://golang.org/dl/go1.21.3.linux-amd64.tar.gz"
-  sudo rm -rf /usr/local/go
-  sudo tar -C /usr/local -xzf "go1.21.3.linux-amd64.tar.gz"
-  rm "go1.21.3.linux-amd64.tar.gz"
-  echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
-  source ~/.bash_profile
-fi
+cd $HOME
+VER="1.21.13"
+wget "https://golang.org/dl/go$VER.linux-amd64.tar.gz"
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf "go$VER.linux-amd64.tar.gz"
+rm "go$VER.linux-amd64.tar.gz"
+[ ! -f ~/.bash_profile ] && touch ~/.bash_profile
+echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile
+source $HOME/.bash_profile
+[ ! -d ~/go/bin ] && mkdir -p ~/go/bin
 ```
 
 ## Download and build binaries

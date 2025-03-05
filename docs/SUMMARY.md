@@ -29,3 +29,9 @@
   * [Upgrade](testnet/union/upgrade/README.md)
   * [Snapshot](testnet/union/snapshot/README.md)
   * [Useful commands](testnet/union/useful-commands/README.md)
+
+* [Sge](testnet/sge/README.md)
+  * [Installation](testnet/sge/installation/README.md)
+  * [Upgrade](testnet/sge/upgrade/README.md)
+  * [Snapshot](testnet/sge/snapshot/README.md)
+  * [Useful commands](testnet/sge/useful-commands/README.md)

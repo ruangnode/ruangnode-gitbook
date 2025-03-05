@@ -16,6 +16,12 @@
   * [Snapshot](mainnet/fuelsequencer/snapshot/README.md)
   * [Useful commands](mainnet/fuelsequencer/useful-commands/README.md)
 
+* [Sge](mainnet/sge/README.md)
+  * [Installation](mainnet/sge/installation/README.md)
+  * [Upgrade](mainnet/sge/upgrade/README.md)
+  * [Snapshot](mainnet/sge/snapshot/README.md)
+  * [Useful commands](mainnet/sge/useful-commands/README.md)
+
 ## TESTNET
 
 * [Atomone](testnet/atomone/README.md)

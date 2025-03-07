@@ -22,6 +22,12 @@
   * [Snapshot](mainnet/sge/snapshot/README.md)
   * [Useful commands](mainnet/sge/useful-commands/README.md)
 
+* [Avail](mainnet/avail/README.md)
+  * [Installation](mainnet/avail/installation/README.md)
+  * [Upgrade](mainnet/avail/upgrade/README.md)
+  * [Snapshot](mainnet/avail/snapshot/README.md)
+  * [Useful commands](mainnet/avail/useful-commands/README.md)
+
 ## TESTNET
 
 * [Atomone](testnet/atomone/README.md)

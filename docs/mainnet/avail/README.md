@@ -2,7 +2,7 @@
 
 <figure><img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/avail.png" alt=""><figcaption></figcaption></figure>
 
-AtomOne is a community-driven, constitutionally governed blockchain designed to prioritize security, decentralization, and innovation within the Cosmos ecosystem. Serving as a minimal fork of the Cosmos Hub, it supports IBC and ICS for scalable interchain solutions.
+Avail aims to accelerate the unification of Web3 using its cutting edge modular technology stack that combines data availability, aggregation, and shared security.
 
 **Chain ID**: mainnet | **v2.2.1**:  | **Wasm**: ON
 

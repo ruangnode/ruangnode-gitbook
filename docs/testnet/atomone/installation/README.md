@@ -100,7 +100,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"19\"/" $HOME/.atomone/c
 
 ## Set minimum gas price
 ```
-sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0.001uatone"|g' $HOME/.atomone/config/app.toml
+sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0.025uatone"|g' $HOME/.atomone/config/app.toml
 ```
 
 ## Create service

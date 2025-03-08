@@ -28,6 +28,11 @@
   * [Snapshot](mainnet/avail/snapshot/README.md)
   * [Useful commands](mainnet/avail/useful-commands/README.md)
 
+* [Ario](mainnet/ar-io/README.md)
+  * [Installation](mainnet/ar-io/installation/README.md)
+  * [Upgrade](mainnet/ar-io/upgrade/README.md)
+  * [Snapshot](mainnet/ar-io/snapshot/README.md)
+  * [Useful commands](mainnet/ar-io/useful-commands/README.md)
 ## TESTNET
 
 * [Atomone](testnet/atomone/README.md)

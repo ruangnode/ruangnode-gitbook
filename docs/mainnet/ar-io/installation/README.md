@@ -345,5 +345,5 @@ Your node should now be running and connected to the internet. Test it by enteri
 
 **Note**: If you encounter any issues during the installation process, please seek assistance from the [AR.IO community](https://discord.gg/7zUPfN4D6g).
 
-Follow (official docs)[https://docs.ar.io/gateways/linux-setup]
-Join Gateway (Join Network)[https://docs.ar.io/gateways/join-network]
+**Official Docs:** [official docs](https://docs.ar.io/gateways/linux-setup)
+**How to Join Gateway** [Join Gateway](https://docs.ar.io/gateways/join-networ)

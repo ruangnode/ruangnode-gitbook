@@ -33,6 +33,13 @@
   * [Upgrade](mainnet/ar-io/upgrade/README.md)
   * [Snapshot](mainnet/ar-io/snapshot/README.md)
   * [Useful commands](mainnet/ar-io/useful-commands/README.md)
+
+* [Crossfi](mainnet/crossfid/README.md)
+  * [Installation](mainnet/crossfid/installation/README.md)
+  * [Upgrade](mainnet/crossfid/upgrade/README.md)
+  * [Snapshot](mainnet/crossfid/snapshot/README.md)
+  * [Useful commands](mainnet/crossfid/useful-commands/README.md)
+
 ## TESTNET
 
 * [Atomone](testnet/atomone/README.md)

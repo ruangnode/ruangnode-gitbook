@@ -4,7 +4,7 @@
 
 AtomOne is a community-driven, constitutionally governed blockchain designed to prioritize security, decentralization, and innovation within the Cosmos ecosystem. Serving as a minimal fork of the Cosmos Hub, it supports IBC and ICS for scalable interchain solutions.
 
-**Chain ID**: atomone-1 | **v1.0.1**:  | **Wasm**: OFF
+**Chain ID**: atomone-1 | **v1.1.2**:  | **Wasm**: OFF
 
 [Website](https://atom.one) | [Discord](https://discord.gg/Fd7W5zyd63) | [Twitter](https://x.com/_atomone)
 

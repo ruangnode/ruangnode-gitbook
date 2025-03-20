@@ -40,8 +40,8 @@ source HOME/.bash_profile
 ## Download and build binaries
 ```
 cd $HOME
-wget https://server-1.ruangnode.com/testnet/selfchain/selfchaind-v1.01
-mv selfchaind-v1.01 selfchaind
+wget https://server-1.ruangnode.com/testnet/selfchain/selfchaind-v1.0.1
+mv selfchaind-v1.0.1 selfchaind
 chmod +x selfchaind
 mv selfchaind $HOME/go/bin/selfchain
 ```

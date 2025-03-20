@@ -60,7 +60,7 @@
   * [Snapshot](testnet/sge/snapshot/README.md)
   * [Useful commands](testnet/sge/useful-commands/README.md)
 
-* [Selfchain](testnet/self/README.md)
+* [Selfchain](testnet/selfchain/README.md)
   * [Installation](testnet/selfchain/installation/README.md)
   * [Upgrade](testnet/selfchain/upgrade/README.md)
   * [Snapshot](testnet/selfchain/snapshot/README.md)

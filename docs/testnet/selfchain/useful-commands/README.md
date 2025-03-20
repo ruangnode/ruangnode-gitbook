@@ -35,7 +35,7 @@ selfchaind tx staking create-validator \
   --min-self-delegation "1" \
   --pubkey $(selfchaind tendermint show-validator) \
   --moniker=$MONIKER \
-  --chain-id=sge-selfchain-testnet \
+  --chain-id=selfchain-testnet \
   --gas-adjustment 1.4 \
   --gas auto \
   --gas-prices 0.001uself
@@ -44,22 +44,22 @@ selfchaind tx staking create-validator \
 ## Staking, Delegation, and Rewards
 Delegate stake:
 ```
-selfchaind tx staking delegate $VALOPER_ADDRESS 1000000uself --from=wallet --chain-id=sge-selfchain-testnet --gas=auto
+selfchaind tx staking delegate $VALOPER_ADDRESS 1000000uself --from=wallet --chain-id=selfchain-testnet --gas=auto
 ```
 
 Redelegate stake:
 ```
-selfchaind tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 1000000uself --from=wallet --chain-id=sge-selfchain-testnet --gas=auto
+selfchaind tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 1000000uself --from=wallet --chain-id=selfchain-testnet --gas=auto
 ```
 
 Withdraw all rewards:
 ```
-selfchaind tx distribution withdraw-all-rewards --from=wallet --chain-id=sge-selfchain-testnet --gas=auto
+selfchaind tx distribution withdraw-all-rewards --from=wallet --chain-id=selfchain-testnet --gas=auto
 ```
 
 Withdraw rewards with commission:
 ```
-selfchaind tx distribution withdraw-rewards $VALOPER_ADDRESS --from=wallet --commission --chain-id=sge-selfchain-testnet
+selfchaind tx distribution withdraw-rewards $VALOPER_ADDRESS --from=wallet --commission --chain-id=selfchain-testnet
 ```
 
 ## Validator Management
@@ -70,13 +70,13 @@ selfchaind tx staking edit-validator \
   --identity=<your_keybase_id> \
   --website="<your_website>" \
   --details="<your_validator_description>" \
-  --chain-id=sge-selfchain-testnet \
+  --chain-id=selfchain-testnet \
   --from=wallet
 ```
 
 Unjail validator:
 ```
-selfchaind tx slashing unjail --from=wallet --chain-id=sge-selfchain-testnet --gas=auto
+selfchaind tx slashing unjail --from=wallet --chain-id=selfchain-testnet --gas=auto
 ```
 
 ## Service Management

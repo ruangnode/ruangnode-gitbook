@@ -3,7 +3,7 @@
 
 <figure><img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/selfchain.png" alt=""><figcaption></figcaption></figure>
 
-AtomOne is a community-driven, constitutionally governed blockchain designed to prioritize security, decentralization, and innovation within the Cosmos ecosystem. Serving as a minimal fork of the Cosmos Hub, it supports IBC and ICS for scalable interchain solutions.
+Modular Intent-Centric Access Layer 1 Blockchain and Keyless Wallet Infrastructure Service That Uses MPC-TSS/AA for Multi-Chain WEB3 Access.
 
 **Chain ID**: sge-selfchain-testnet | **BIN_VERSION**: v1.0.1  | **Wasm**: on
 

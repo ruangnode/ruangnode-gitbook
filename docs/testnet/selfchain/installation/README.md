@@ -48,7 +48,7 @@ mv selfchaind $HOME/go/bin/selfchain
 
 ## Init app
 ```
-selfchaind init Yournodename --chain-id sge-selfchain-testnet
+selfchaind init Yournodename --chain-id selfchain-testnet
 ```
 
 ## Download configuration

@@ -8,8 +8,8 @@ description: Setting up your validator node has never been so easy. Get your val
 ```
 echo "export NODENAME=Yournodename" >> $HOME/.bash_profile
 echo "export WALLET=wallet" >> $HOME/.bash_profile
-echo "export CHAIN_ID=sge-selfchain-testnet" >> $HOME/.bash_profile
-echo "export CUSTOM_PORT="13"" >> /home/github/.bash_profile
+echo "export CHAIN_ID=selfchain-testnet" >> $HOME/.bash_profile
+echo "export CUSTOM_PORT="13"" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 

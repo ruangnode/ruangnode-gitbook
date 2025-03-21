@@ -38,7 +38,7 @@ selfchaind tx staking create-validator \
   --chain-id=selfchain-testnet \
   --gas-adjustment 1.4 \
   --gas auto \
-  --gas-prices 0.001uself
+  --gas-prices 0.005uself
 ```
 
 ## Staking, Delegation, and Rewards

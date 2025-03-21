@@ -101,7 +101,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"19\"/" $HOME/.selfchain
 
 ## Set minimum gas price
 ```
-sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "200000uself"|g' $HOME/.selfchain/config/app.toml
+sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0.005uself"|g' $HOME/.selfchain/config/app.toml
 ```
 
 ## Create service

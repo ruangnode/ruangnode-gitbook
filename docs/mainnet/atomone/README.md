@@ -18,7 +18,7 @@ AtomOne is a community-driven, constitutionally governed blockchain designed to 
 
 * api: [https://m-atomone-api.ruangnode.com/](https://m-atomone-api.ruangnode.com/)
 * rpc: [https://m-atomone-rpc.ruangnode.com/](https://m-atomone-rpc.ruangnode.com/)
-* grpc: m-atomone-grpc.ruangnode.com:62090
+* grpc: m-atomone-grpc.ruangnode.com:8443
 
 ## Peering
 

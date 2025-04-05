@@ -8,7 +8,7 @@ description: Discover base tools contributed to the projects by ruangnode team.
 <img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/avail.png" alt="" data-size="line"> [Avail](mainnet/avail/)
 <img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/ario.png" alt="" data-size="line"> [Ario](mainnet/ar-io/)
 <img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/crossfid.png" alt="" data-size="line"> [Crossfi](mainnet/crossfid/)
-<img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/arkeo.png" alt="" data-size="line"> [Crossfi](mainnet/arkeo/)
+<img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/arkeo.png" alt="" data-size="line"> [Arkeo](mainnet/arkeo/)
 
 ## TESTNET
 <img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/atomone.png" alt="" data-size="line"> [Atomone](testnet/atomone/)

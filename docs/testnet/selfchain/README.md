@@ -5,7 +5,7 @@
 
 Modular Intent-Centric Access Layer 1 Blockchain and Keyless Wallet Infrastructure Service That Uses MPC-TSS/AA for Multi-Chain WEB3 Access.
 
-**Chain ID**: sge-selfchain-testnet | **BIN_VERSION**: v1.0.1  | **Wasm**: on
+**Chain ID**: selfchain-testnet | **BIN_VERSION**: v1.0.1  | **Wasm**: on
 
 [Website](https://selfchain.xyz/) | [Discord](https://discord.gg/VNjrS7aAa7) | [Twitter](https://x.com/selfchainxyz)
 

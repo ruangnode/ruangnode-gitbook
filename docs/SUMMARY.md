@@ -40,6 +40,12 @@
   * [Snapshot](mainnet/crossfid/snapshot/README.md)
   * [Useful commands](mainnet/crossfid/useful-commands/README.md)
 
+* [Arkeo](mainnet/arkeo/README.md)
+  * [Installation](mainnet/arkeo/installation/README.md)
+  * [Upgrade](mainnet/arkeo/upgrade/README.md)
+  * [Snapshot](mainnet/arkeo/snapshot/README.md)
+  * [Useful commands](mainnet/arkeo/useful-commands/README.md)
+
 ## TESTNET
 
 * [Atomone](testnet/atomone/README.md)

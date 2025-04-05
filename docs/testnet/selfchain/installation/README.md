@@ -3,7 +3,7 @@ description: Setting up your validator node has never been so easy. Get your val
 ---
 # Installation
 <figure><img src="https://raw.githubusercontent.com/ruangnode/cosmos-images/main/logos/selfchain.png" alt=""><figcaption></figcaption></figure>
-**Chain ID**: sge-selfchain-testnet | **Latest Version Tag**: v1.0.1  | **Custom Port**: 13
+**Chain ID**: selfchain-testnet | **Latest Version Tag**: v1.0.1  | **Custom Port**: 13
 
 ```
 echo "export NODENAME=Yournodename" >> $HOME/.bash_profile

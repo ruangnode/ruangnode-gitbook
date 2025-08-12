@@ -40,7 +40,7 @@ source $HOME/.bash_profile
 ## Download and install binary
 ```
 cd $HOME
-wget -O dorad https://server-1.ruangnode.com/mainnet/atomone/dorad
+wget -O dorad https://server-1.ruangnode.com/mainnet/doravota/dorad
 chmod +x dorad
 mv dorad $HOME/go/bin/dorad
 ```

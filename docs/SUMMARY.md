@@ -46,6 +46,12 @@
   * [Snapshot](mainnet/arkeo/snapshot/README.md)
   * [Useful commands](mainnet/arkeo/useful-commands/README.md)
 
+* [Dora](mainnet/dora/README.md)
+  * [Installation](mainnet/dora/installation/README.md)
+  * [Upgrade](mainnet/dora/upgrade/README.md)
+  * [Snapshot](mainnet/dora/snapshot/README.md)
+  * [Useful commands](mainnet/dora/useful-commands/README.md)
+
 ## TESTNET
 
 * [Atomone](testnet/atomone/README.md)
